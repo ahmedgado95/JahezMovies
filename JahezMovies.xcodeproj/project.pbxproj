@@ -29,9 +29,35 @@
 		F8C66E112E4B52E000D743B9 /* JahezMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JahezMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F81FF0C32E4B5791004067E4 /* Exceptions for "JahezMovies" folder in "JahezMovies" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Modules/Config/Config.xcconfig,
+				"Modules/Movies Details/MovieDetails",
+				Modules/Movies/Movies,
+			);
+			target = F8C66DF62E4B52DD00D743B9 /* JahezMovies */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		F81FF0C42E4B5791004067E4 /* Exceptions for "JahezMovies" folder in "Compile Sources" phase from "JahezMovies" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = F8C66DF32E4B52DD00D743B9 /* Sources */;
+			membershipExceptions = (
+				Modules/Config/Config.xcconfig,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F8C66DF92E4B52DD00D743B9 /* JahezMovies */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F81FF0C32E4B5791004067E4 /* Exceptions for "JahezMovies" folder in "JahezMovies" target */,
+				F81FF0C42E4B5791004067E4 /* Exceptions for "JahezMovies" folder in "Compile Sources" phase from "JahezMovies" target */,
+			);
 			path = JahezMovies;
 			sourceTree = "<group>";
 		};
@@ -271,6 +297,8 @@
 /* Begin XCBuildConfiguration section */
 		F8C66E192E4B52E000D743B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = F8C66DF92E4B52DD00D743B9 /* JahezMovies */;
+			baseConfigurationReferenceRelativePath = Modules/Config/Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -390,6 +418,8 @@
 		};
 		F8C66E1C2E4B52E000D743B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = F8C66DF92E4B52DD00D743B9 /* JahezMovies */;
+			baseConfigurationReferenceRelativePath = Modules/Config/Config.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -446,6 +476,8 @@
 		};
 		F8C66E1F2E4B52E000D743B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = F8C66DF92E4B52DD00D743B9 /* JahezMovies */;
+			baseConfigurationReferenceRelativePath = Modules/Config/Config.xcconfig;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

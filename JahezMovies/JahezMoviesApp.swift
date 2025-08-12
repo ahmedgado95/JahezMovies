@@ -11,7 +11,6 @@ import SwiftUI
 struct JahezMoviesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
         }
     }
 }
