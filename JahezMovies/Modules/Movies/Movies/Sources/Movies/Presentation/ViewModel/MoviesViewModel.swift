@@ -9,7 +9,20 @@ import Combine
 import SwiftUI
 
 final class MoviesViewModel: ObservableObject {
-    // MARK: - Vars
-    @Published var movies: [String] = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"]
+    @Published var movies: [String] = [
+        "first", "second", "third", "fourth",
+        "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"
+    ]
+    
+    @Published var genres: [String] = [
+        "one", "two", "three", "four", "five",
+        "six", "seven", "eight", "nine", "ten"
+    ]
+    
     let columnsGrids = Array(repeating: GridItem(.flexible()), count: 2)
+    @Published var selectedCategory: String?
+    
+    init() {
+        self.selectedCategory = genres.first
+    }
 }

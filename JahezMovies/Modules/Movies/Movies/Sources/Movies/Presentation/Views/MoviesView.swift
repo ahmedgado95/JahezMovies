@@ -30,6 +30,7 @@ public struct MoviesView: View {
     public var body: some View {
         NavigationView {
             VStack {
+                GenresView(viewModel: viewModel)
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: viewModel.columnsGrids,
                               spacing: 4) {

@@ -8,9 +8,13 @@ import Foundation
 
 public
 enum Constants {
-  public
-  enum Network {
-    static let baseURL = "https://api.themoviedb.org/3/"
-  }
-}
+    public
+    enum Network {
+        static let baseURL = "https://api.themoviedb.org/3/"
+    }
 
+    public
+    enum Color {
+        public static let yellowColor = "#F5C519"
+    }
+}
