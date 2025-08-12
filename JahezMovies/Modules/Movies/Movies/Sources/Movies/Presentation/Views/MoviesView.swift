@@ -28,6 +28,7 @@ public struct MoviesView: View {
     }
     
     public var body: some View {
+        SearchBar(viewModel: viewModel)
         NavigationView {
             VStack {
                 GenresView(viewModel: viewModel)

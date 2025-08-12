@@ -21,7 +21,8 @@ final class MoviesViewModel: ObservableObject {
     
     let columnsGrids = Array(repeating: GridItem(.flexible()), count: 2)
     @Published var selectedCategory: String?
-    
+    var searchText: String = ""
+
     init() {
         self.selectedCategory = genres.first
     }
