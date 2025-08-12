@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F814DBAC2E4B772000EB29E5 /* GadoNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = F814DBAB2E4B772000EB29E5 /* GadoNetwork */; };
+		F8CDAAF62E4B8BCB009F5401 /* GeneralSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8CDAAF52E4B8BCB009F5401 /* GeneralSwift */; };
+		F8CDAAF82E4B8BD3009F5401 /* Movies in Frameworks */ = {isa = PBXBuildFile; productRef = F8CDAAF72E4B8BD3009F5401 /* Movies */; };
+		F8CDAAFA2E4B8BDA009F5401 /* MovieDetails in Frameworks */ = {isa = PBXBuildFile; productRef = F8CDAAF92E4B8BDA009F5401 /* MovieDetails */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,7 @@
 		F8C66DF72E4B52DD00D743B9 /* JahezMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JahezMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C66E072E4B52E000D743B9 /* JahezMoviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JahezMoviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C66E112E4B52E000D743B9 /* JahezMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JahezMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8CDAAF32E4B8B88009F5401 /* GeneralSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GeneralSwift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -84,6 +88,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F814DBAC2E4B772000EB29E5 /* GadoNetwork in Frameworks */,
+				F8CDAAF82E4B8BD3009F5401 /* Movies in Frameworks */,
+				F8CDAAFA2E4B8BDA009F5401 /* MovieDetails in Frameworks */,
+				F8CDAAF62E4B8BCB009F5401 /* GeneralSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,10 +114,12 @@
 		F8C66DEE2E4B52DD00D743B9 = {
 			isa = PBXGroup;
 			children = (
+				F8CDAAF32E4B8B88009F5401 /* GeneralSwift */,
 				F814DBAD2E4B77A700EB29E5 /* GadoNetwork */,
 				F8C66DF92E4B52DD00D743B9 /* JahezMovies */,
 				F8C66E0A2E4B52E000D743B9 /* JahezMoviesTests */,
 				F8C66E142E4B52E000D743B9 /* JahezMoviesUITests */,
+				F8CDAAF42E4B8BCB009F5401 /* Frameworks */,
 				F8C66DF82E4B52DD00D743B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,6 +132,13 @@
 				F8C66E112E4B52E000D743B9 /* JahezMoviesUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F8CDAAF42E4B8BCB009F5401 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +162,9 @@
 			name = JahezMovies;
 			packageProductDependencies = (
 				F814DBAB2E4B772000EB29E5 /* GadoNetwork */,
+				F8CDAAF52E4B8BCB009F5401 /* GeneralSwift */,
+				F8CDAAF72E4B8BD3009F5401 /* Movies */,
+				F8CDAAF92E4B8BDA009F5401 /* MovieDetails */,
 			);
 			productName = JahezMovies;
 			productReference = F8C66DF72E4B52DD00D743B9 /* JahezMovies.app */;
@@ -599,6 +618,18 @@
 		F814DBAB2E4B772000EB29E5 /* GadoNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GadoNetwork;
+		};
+		F8CDAAF52E4B8BCB009F5401 /* GeneralSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GeneralSwift;
+		};
+		F8CDAAF72E4B8BD3009F5401 /* Movies */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Movies;
+		};
+		F8CDAAF92E4B8BDA009F5401 /* MovieDetails */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDetails;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
