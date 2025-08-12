@@ -8,12 +8,12 @@
 import Foundation
 
 public
-struct SessionDataTaskErrorResponse: Codable {
+struct SessionDataTaskErrorResponse: Codable, Sendable{
   let error: SessionDataTaskErrorModel?
 }
 
 public
-struct SessionDataTaskErrorModel: Codable {
+struct SessionDataTaskErrorModel: Codable, Sendable {
   let code: Int?
   let status: Int?
   let message: String?

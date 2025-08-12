@@ -8,11 +8,13 @@
 import Foundation
 import Combine
 
+@available(iOS 13.0, *)
 public
 protocol BaseAPIClientProtocol {
   func perform<T: Decodable>(_ request: URLRequest) -> AnyPublisher<T, SessionDataTaskError>
 }
 
+@available(iOS 13.0, *)
 public
 struct BaseAPIClient: BaseAPIClientProtocol {
   public init() {}
