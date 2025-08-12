@@ -34,8 +34,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Modules/Config/Config.xcconfig,
-				"Modules/Movies Details/MovieDetails",
-				Modules/Movies/Movies,
 			);
 			target = F8C66DF62E4B52DD00D743B9 /* JahezMovies */;
 		};
