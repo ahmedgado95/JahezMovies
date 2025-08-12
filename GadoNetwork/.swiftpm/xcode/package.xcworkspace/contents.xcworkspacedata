@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "self:"
+      name = "GadoNetwork">
+      <Group
+         location = "group:Tests"
+         name = "Tests">
+         <Group
+            location = "group:GadoNetworkTests"
+            name = "GadoNetworkTests">
+            <FileRef
+               location = "group:GadoNetworkTests.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:Package.swift">
+      </FileRef>
+      <Group
+         location = "group:Sources"
+         name = "Sources">
+         <Group
+            location = "group:GadoNetwork"
+            name = "GadoNetwork">
+            <Group
+               location = "group:Models"
+               name = "Models">
+               <FileRef
+                  location = "group:RepositoryError.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UploadMediaFile.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:HTTPMethod.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:SessionDataTaskError.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:SessionDataTaskErrorResponse.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Extensions"
+               name = "Extensions">
+               <FileRef
+                  location = "group:Constants.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:Dictionary+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:Data+Extensions.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Base"
+               name = "Base">
+               <FileRef
+                  location = "group:BaseAPIClient.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:BaseAPIRequest.swift">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:APIRequestConfiguration.swift">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
+</Workspace>

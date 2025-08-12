@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F814DBAC2E4B772000EB29E5 /* GadoNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = F814DBAB2E4B772000EB29E5 /* GadoNetwork */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F8C66E082E4B52E000D743B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F814DBAD2E4B77A700EB29E5 /* GadoNetwork */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GadoNetwork; sourceTree = "<group>"; };
 		F8C66DF72E4B52DD00D743B9 /* JahezMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JahezMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C66E072E4B52E000D743B9 /* JahezMoviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JahezMoviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C66E112E4B52E000D743B9 /* JahezMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JahezMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F814DBAC2E4B772000EB29E5 /* GadoNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +107,7 @@
 		F8C66DEE2E4B52DD00D743B9 = {
 			isa = PBXGroup;
 			children = (
+				F814DBAD2E4B77A700EB29E5 /* GadoNetwork */,
 				F8C66DF92E4B52DD00D743B9 /* JahezMovies */,
 				F8C66E0A2E4B52E000D743B9 /* JahezMoviesTests */,
 				F8C66E142E4B52E000D743B9 /* JahezMoviesUITests */,
@@ -138,6 +145,7 @@
 			);
 			name = JahezMovies;
 			packageProductDependencies = (
+				F814DBAB2E4B772000EB29E5 /* GadoNetwork */,
 			);
 			productName = JahezMovies;
 			productReference = F8C66DF72E4B52DD00D743B9 /* JahezMovies.app */;
@@ -221,6 +229,8 @@
 			);
 			mainGroup = F8C66DEE2E4B52DD00D743B9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F8C66DF82E4B52DD00D743B9 /* Products */;
 			projectDirPath = "";
@@ -584,6 +594,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F814DBAB2E4B772000EB29E5 /* GadoNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GadoNetwork;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F8C66DEF2E4B52DD00D743B9 /* Project object */;
 }
