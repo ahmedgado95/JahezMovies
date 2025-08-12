@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		F814DBAC2E4B772000EB29E5 /* GadoNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = F814DBAB2E4B772000EB29E5 /* GadoNetwork */; };
 		F8CDAAF62E4B8BCB009F5401 /* GeneralSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8CDAAF52E4B8BCB009F5401 /* GeneralSwift */; };
-		F8CDAAF82E4B8BD3009F5401 /* Movies in Frameworks */ = {isa = PBXBuildFile; productRef = F8CDAAF72E4B8BD3009F5401 /* Movies */; };
 		F8CDAAFA2E4B8BDA009F5401 /* MovieDetails in Frameworks */ = {isa = PBXBuildFile; productRef = F8CDAAF92E4B8BDA009F5401 /* MovieDetails */; };
+		F8CDAB3D2E4B9452009F5401 /* Movies in Frameworks */ = {isa = PBXBuildFile; productRef = F8CDAB3C2E4B9452009F5401 /* Movies */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F814DBAC2E4B772000EB29E5 /* GadoNetwork in Frameworks */,
-				F8CDAAF82E4B8BD3009F5401 /* Movies in Frameworks */,
+				F8CDAB3D2E4B9452009F5401 /* Movies in Frameworks */,
 				F8CDAAFA2E4B8BDA009F5401 /* MovieDetails in Frameworks */,
 				F8CDAAF62E4B8BCB009F5401 /* GeneralSwift in Frameworks */,
 			);
@@ -163,8 +163,8 @@
 			packageProductDependencies = (
 				F814DBAB2E4B772000EB29E5 /* GadoNetwork */,
 				F8CDAAF52E4B8BCB009F5401 /* GeneralSwift */,
-				F8CDAAF72E4B8BD3009F5401 /* Movies */,
 				F8CDAAF92E4B8BDA009F5401 /* MovieDetails */,
+				F8CDAB3C2E4B9452009F5401 /* Movies */,
 			);
 			productName = JahezMovies;
 			productReference = F8C66DF72E4B52DD00D743B9 /* JahezMovies.app */;
@@ -378,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -435,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -462,6 +462,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,6 +491,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -623,13 +625,13 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = GeneralSwift;
 		};
-		F8CDAAF72E4B8BD3009F5401 /* Movies */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Movies;
-		};
 		F8CDAAF92E4B8BDA009F5401 /* MovieDetails */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MovieDetails;
+		};
+		F8CDAB3C2E4B9452009F5401 /* Movies */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Movies;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

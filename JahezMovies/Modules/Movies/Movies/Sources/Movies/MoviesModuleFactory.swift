@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import GeneralSwift
+
+
+public
+class MoviesModuleFactory {
+    public
+    static func makeModule(with coordinator: MoviesCoordinatorProtocol) -> MoviesView {
+        // ViewModel
+        let viewModel = MoviesViewModel()
+        
+        // View
+        return MainActor.assumeIsolated {
+            MoviesView(viewModel: viewModel)
+        }
+    }
+}

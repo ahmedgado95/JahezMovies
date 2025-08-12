@@ -11,6 +11,9 @@ import SwiftUI
 struct JahezMoviesApp: App {
     var body: some Scene {
         WindowGroup {
+            let navigationController = UINavigationController()
+            let coordinator = MoviesCoordinator(navigationController: navigationController)
+            MoviesCoordinatorView(coordinator: coordinator)
         }
     }
 }
