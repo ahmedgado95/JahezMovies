@@ -84,51 +84,49 @@ public struct MoviesView: View {
         }
     }
     
-    // MARK: - Movie Card View
+    //    // MARK: - Movie Card View
     private struct MovieCardView: View {
         var title: String
         var date: String
         var url: String?
         
         var body: some View {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 AsyncImage(url: URL(string:"\(Constants.Network.imageBaseURL)\(url ?? "")")) { phase in
                     if let image = phase.image {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 180)
-                            .clipped()
                     } else if phase.error != nil || url == nil || url?.isEmpty == true {
                         Image(systemName: "photo")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: .infinity, maxHeight: 180)
                             .foregroundColor(.gray)
-                            .background(Color.secondary.opacity(0.3))
-                            .clipped()
                     } else {
                         ProgressView()
-                            .frame(maxWidth: .infinity, maxHeight: 180)
-                            .background(Color.secondary.opacity(0.3))
                     }
                 }
+                .frame(height: 180)
+                .frame(maxWidth: .infinity)
+                .clipped()
                 
                 Text(title)
                     .font(.headline)
                     .foregroundColor(.white)
-                    .padding(4)
+                    .lineLimit(3)
+                    .truncationMode(.middle)
+                    .padding(.horizontal, 8)
                 
-                Text(date)
-                    .font(.headline)
+                Text(date.yearOnly())
+                    .font(.subheadline)
                     .foregroundColor(.white)
-                    .padding(.horizontal, 4)
-                    .padding(.bottom, 12)
+                    .padding(.horizontal, 8)
             }
-            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .frame(height: 260, alignment: .top)
+            .frame(maxWidth: .infinity)
             .background(Color(red: 0.102, green: 0.102, blue: 0.102))
-            .padding(4)
+            .clipped()
+            .padding(8)
         }
     }
 }

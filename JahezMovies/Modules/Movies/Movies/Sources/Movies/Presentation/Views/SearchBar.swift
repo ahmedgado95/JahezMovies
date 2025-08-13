@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SearchBar: View {
     @ObservedObject var viewModel: MoviesViewModel
-    
     var body: some View {
         HStack {
             TextField("Search TMDB",
@@ -23,8 +22,19 @@ struct SearchBar: View {
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.white)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 8)
+                    
+                    Spacer()
+                    
+                    if !viewModel.searchText.isEmpty {
+                        Button(action: {
+                            viewModel.searchText = ""
+                        }) {
+                            Image(systemName: "xmark.circle")
+                                .foregroundColor(.white)
+                                .padding(.trailing, 8)
+                        }
+                    }
                 }
             )
             .padding(.horizontal, 12)
