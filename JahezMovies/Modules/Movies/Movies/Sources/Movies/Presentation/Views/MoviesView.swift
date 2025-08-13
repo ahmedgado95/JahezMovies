@@ -35,40 +35,53 @@ public struct MoviesView: View {
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: viewModel.columnsGrids,
                               spacing: 4) {
-                        ForEach($viewModel.movies, id: \.self) { movie in
-                            MovieCardView(title: movie,
-                                          date: "2025",
-                                          url: "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U")
+                        ForEach(viewModel.state.movies, id: \.id) { movie in
+                            MovieCardView(title: movie.title,
+                                          date: movie.releaseDate,
+                                          url: movie.posterPath)
                         }
                     }
                 }
             }
             .navigationTitle("Watch New Movies")
+            .redacted(reason: viewModel.state.isLoading ? .placeholder : [])
+        }
+        .onAppear {
+            viewModel.getMovies()
         }
     }
 }
 
 private struct MovieCardView: View {
-    @Binding  var title: String
-    @State var date: String
-    @State var url: String?
+    var title: String
+    var date: String
+    var url: String?
+    
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: url ?? "")) { phase in
+            AsyncImage(url: URL(string:"\(Constants.Network.imageBaseURL)\(url ?? "")")) { phase in
                 if let image = phase.image {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 180)
+                        .clipped()
                 } else if phase.error != nil || url == nil || url?.isEmpty == true {
-                    Image("arrow.2.circlepath.circle")
+                    Image(systemName: "photo")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: 180)
+                        .foregroundColor(.gray)
+                        .background(Color.secondary.opacity(0.3))
+                        .clipped()
                 } else {
                     ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: 180)
+                        .background(Color.secondary.opacity(0.3))
                 }
             }
-            .frame(height: 180)
-            .clipped()
+          
             
             Text(title)
                 .font(.headline)
@@ -76,16 +89,13 @@ private struct MovieCardView: View {
                 .padding(4)
             
             Text(date)
-                .font(.caption)
+                .font(.headline)
                 .foregroundColor(.white)
-                .padding(4)
+                .padding(.horizontal, 4)
+                .padding(.bottom, 12)
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
         .background(Color(red: 0.102, green: 0.102, blue: 0.102))
-        .padding(8)
+        .padding(4)
     }
-    
-}
-#Preview {
-    MoviesView(viewModel: MoviesViewModel())
 }

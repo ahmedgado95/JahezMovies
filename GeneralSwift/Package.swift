@@ -12,13 +12,21 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "GeneralSwift",
-            targets: ["GeneralSwift"]),
+            targets: ["GeneralSwift"]
+        ),
+    ],
+    dependencies: [
+        .package(path: "GadoNetwork")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "GeneralSwift"),
+            name: "GeneralSwift",
+            dependencies: [
+                .product(name: "GadoNetwork", package: "GadoNetwork")
+            ]
+        ),
         .testTarget(
             name: "GeneralSwiftTests",
             dependencies: ["GeneralSwift"]

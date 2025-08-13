@@ -7,13 +7,14 @@
 
 import Combine
 import SwiftUI
+import GeneralSwift
 
 final class MoviesViewModel: ObservableObject {
-    @Published var movies: [String] = [
-        "first", "second", "third", "fourth",
-        "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"
-    ]
-    
+    // MARK: - Vars
+    @Published var state = MovieViewState()
+    private var currentPage = 0
+    private var cancellable: Set<AnyCancellable> = []
+
     @Published var genres: [String] = [
         "one", "two", "three", "four", "five",
         "six", "seven", "eight", "nine", "ten"
@@ -23,7 +24,37 @@ final class MoviesViewModel: ObservableObject {
     @Published var selectedCategory: String?
     var searchText: String = ""
 
-    init() {
+    // MARK: - Dependencies
+    private var useCase: MoviesUseCaseProtocol
+    private var coordinator: MoviesCoordinatorProtocol
+
+    init(useCase: MoviesUseCaseProtocol, coordinator: MoviesCoordinatorProtocol) {
+        self.useCase = useCase
+        self.coordinator = coordinator
         self.selectedCategory = genres.first
     }
+}
+
+
+// MARK: - Fetching Data
+extension MoviesViewModel {
+    func getMovies() {
+        state.isLoading = true
+        currentPage += 1
+        useCase.fetchMovies(for: currentPage)
+            .sink { [weak self] completion in
+                guard let self else {
+                    return
+                }
+                if case .failure = completion {
+                    state.isLoading = false
+                }
+            } receiveValue: { [weak self] response in
+                guard let self else { return }
+                state.movies += response.movies
+                state.isLoading = false
+            }
+            .store(in: &cancellable)
+    }
+    
 }

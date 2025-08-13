@@ -5,3 +5,10 @@
 //  Created by ahmed gado on 12/08/2025.
 //
 
+import Foundation
+
+// MARK: - MovieViewState
+struct MovieViewState {
+    var movies: [MovieItem] = []
+    var isLoading: Bool = false
+}
