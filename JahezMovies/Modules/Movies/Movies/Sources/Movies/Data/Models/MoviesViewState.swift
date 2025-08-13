@@ -13,4 +13,5 @@ struct MovieViewState {
     var isLoading: Bool = false
     var genres: [MovieGenre] = []
     var selectedGenre: MovieGenre? = nil
+    var hasMoreData = true
 }

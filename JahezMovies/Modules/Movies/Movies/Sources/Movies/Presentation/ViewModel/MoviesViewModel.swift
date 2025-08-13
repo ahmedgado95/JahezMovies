@@ -33,18 +33,19 @@ final class MoviesViewModel: ObservableObject {
 extension MoviesViewModel {
     func getMovies() {
         state.isLoading = true
-        currentPage += 1
         useCase.fetchMovies(for: currentPage)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
-                guard let self else {
-                    return
-                }
-                if case .failure = completion {
+                guard let self else { return }
+                if case .failure(_) = completion {
                     state.isLoading = false
                 }
             } receiveValue: { [weak self] response in
                 guard let self else { return }
+                
                 state.movies += response.movies
+                state.hasMoreData = currentPage < response.totalPages
+                currentPage += 1
                 state.isLoading = false
             }
             .store(in: &cancellable)
@@ -64,5 +65,19 @@ extension MoviesViewModel {
           state.isLoading = false
         }
         .store(in: &cancellable)
+    }
+    
+    func loadMovies() {
+        currentPage = 1
+        state.hasMoreData = true
+        state.movies.removeAll()
+        getMovies()
+    }
+    
+    func loadNextPage(id: Int) {
+        guard !state.isLoading, state.hasMoreData else { return }
+        if id == state.movies.last?.id {
+            getMovies()
+        }
     }
 }
