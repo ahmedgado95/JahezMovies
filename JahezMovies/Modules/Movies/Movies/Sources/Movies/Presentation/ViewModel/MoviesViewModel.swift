@@ -12,12 +12,15 @@ import GeneralSwift
 final class MoviesViewModel: ObservableObject {
     // MARK: - Vars
     @Published var state = MovieViewState()
+    @Published var searchText: String = "" {
+           didSet { searchMovies() }
+       }
+       
     private var currentPage = 0
     private var cancellable: Set<AnyCancellable> = []
     
     let columnsGrids = Array(repeating: GridItem(.flexible()), count: 2)
-    var searchText: String = ""
-
+    
     // MARK: - Dependencies
     private var useCase: MoviesUseCaseProtocol
     private var coordinator: MoviesCoordinatorProtocol
@@ -99,4 +102,19 @@ extension MoviesViewModel {
         state.noMoviesFound = filtered.isEmpty
     }
     
+    func searchMovies() {
+        let query = searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        var filtered = state.movies
+        
+        if let selectedGenre = state.selectedGenre {
+            filtered = filtered.filter { $0.genres.contains(selectedGenre.id) }
+        }
+        
+        if !query.isEmpty {
+            filtered = filtered.filter { $0.title.lowercased().contains(query) }
+        }
+        
+        state.selectedMovies = filtered
+        state.noMoviesFound = filtered.isEmpty
+    }
 }

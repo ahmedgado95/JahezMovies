@@ -16,7 +16,7 @@ struct SearchBar: View {
                       text: $viewModel.searchText)
             .padding(7)
             .padding(.horizontal, 30)
-            .foregroundColor(Color(.systemGray6))
+            .foregroundColor(Color(red: 0.443, green: 0.443, blue: 0.443))
             .background(Color(red: 0.102, green: 0.102, blue: 0.102))
             .cornerRadius(8)
             .overlay(
@@ -28,6 +28,9 @@ struct SearchBar: View {
                 }
             )
             .padding(.horizontal, 12)
+        }
+        .onChange(of: viewModel.state.selectedGenre) { _ in
+            viewModel.searchMovies()
         }
     }
 }
