@@ -11,7 +11,8 @@ import GadoNetwork
 import GeneralSwift
 
 protocol MoviesUseCaseProtocol {
-  func fetchMovies(for currentPage: Int) -> AnyPublisher<MoviesItems, GeneralError>
+    func fetchMovies(for currentPage: Int) -> AnyPublisher<MoviesItems, GeneralError>
+    func fetchGenres() -> AnyPublisher<[MovieGenre], GeneralError>
 }
 
 struct MoviesItems {
@@ -40,3 +41,8 @@ struct MovieItem {
   let overview: String
 }
 
+
+struct MovieGenre: Identifiable, Equatable {
+  let id: Int
+  let name: String
+}

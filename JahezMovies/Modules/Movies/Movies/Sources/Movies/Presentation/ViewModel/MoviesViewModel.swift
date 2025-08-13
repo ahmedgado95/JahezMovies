@@ -14,14 +14,8 @@ final class MoviesViewModel: ObservableObject {
     @Published var state = MovieViewState()
     private var currentPage = 0
     private var cancellable: Set<AnyCancellable> = []
-
-    @Published var genres: [String] = [
-        "one", "two", "three", "four", "five",
-        "six", "seven", "eight", "nine", "ten"
-    ]
     
     let columnsGrids = Array(repeating: GridItem(.flexible()), count: 2)
-    @Published var selectedCategory: String?
     var searchText: String = ""
 
     // MARK: - Dependencies
@@ -31,7 +25,6 @@ final class MoviesViewModel: ObservableObject {
     init(useCase: MoviesUseCaseProtocol, coordinator: MoviesCoordinatorProtocol) {
         self.useCase = useCase
         self.coordinator = coordinator
-        self.selectedCategory = genres.first
     }
 }
 
@@ -57,4 +50,19 @@ extension MoviesViewModel {
             .store(in: &cancellable)
     }
     
+    func showGenres() {
+      state.isLoading = true
+      useCase.fetchGenres()
+        .sink { [weak self] _ in
+          guard let self else {
+            return
+          }
+          state.isLoading = false
+        } receiveValue: { [weak self] response in
+          guard let self else { return }
+          state.genres = response
+          state.isLoading = false
+        }
+        .store(in: &cancellable)
+    }
 }

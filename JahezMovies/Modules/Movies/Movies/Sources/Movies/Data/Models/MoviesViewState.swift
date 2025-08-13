@@ -11,4 +11,6 @@ import Foundation
 struct MovieViewState {
     var movies: [MovieItem] = []
     var isLoading: Bool = false
+    var genres: [MovieGenre] = []
+    var selectedGenre: MovieGenre? = nil
 }

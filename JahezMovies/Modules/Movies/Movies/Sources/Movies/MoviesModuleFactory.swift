@@ -28,8 +28,11 @@ class MoviesModuleFactory {
         let moviesRepository = MoviesRepository(client: moviesClient,
                                                 modelContext: cacheManager)
         
+        let genreRepository = GenreRepository(client: moviesClient)
+        
         // Use Case
-        let useCase = MoviesUseCase(moviesRepository: moviesRepository)
+        let useCase = MoviesUseCase(moviesRepository: moviesRepository,
+                                    genreRepository: genreRepository)
         
         // ViewModel
         let viewModel = MoviesViewModel(useCase: useCase,

@@ -48,6 +48,7 @@ public struct MoviesView: View {
         }
         .onAppear {
             viewModel.getMovies()
+            viewModel.showGenres()
         }
     }
 }

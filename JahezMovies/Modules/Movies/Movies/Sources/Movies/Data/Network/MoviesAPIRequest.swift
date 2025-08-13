@@ -10,10 +10,11 @@ import GeneralSwift
 
 enum MoviesAPIRequest: APIRequestConfiguration {
     case getMovies(currentPage: Int)
-    
+    case getGenre
+
     var method: HTTPMethod {
         switch self {
-        case .getMovies:
+        case .getMovies, .getGenre :
             return .GET
         }
     }
@@ -22,6 +23,8 @@ enum MoviesAPIRequest: APIRequestConfiguration {
         switch self {
         case .getMovies(let currentPage):
             return "\(Constants.Network.baseURL)\(Constants.Network.movieURL)\(currentPage)\(Secrets.apiKey)"
+        case .getGenre:
+            return "\(Constants.Network.baseURL)\(Constants.Network.genreURL)\(Secrets.apiKey)"
         }
     }
     

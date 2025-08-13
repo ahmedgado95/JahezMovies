@@ -16,9 +16,11 @@ final class MoviesUseCase {
     
     // MARK: - Dependencies
     private var moviesRepository: MoviesRepositoryProtocol
+    private var genreRepository: GenreRepositoryProtocol
     
-    init(moviesRepository: MoviesRepositoryProtocol) {
+    init(moviesRepository: MoviesRepositoryProtocol, genreRepository: GenreRepositoryProtocol) {
         self.moviesRepository = moviesRepository
+        self.genreRepository = genreRepository
     }
     
     
@@ -47,6 +49,17 @@ final class MoviesUseCase {
         )
     }
     
+    private
+    func convertGenres(_ genres: [GenreRepositoryModel]?) -> [MovieGenre] {
+      genres?.compactMap({ genre in
+        MovieGenre(
+          id: genre.id ?? 0,
+          name:genre.name ?? ""
+        )
+      }) ?? []
+    }
+
+    
 }
 
 // MARK: - MoviesUseCaseProtocol
@@ -71,4 +84,27 @@ extension MoviesUseCase: MoviesUseCaseProtocol {
         }
         .eraseToAnyPublisher()
     }
+    
+    func fetchGenres() -> AnyPublisher<[MovieGenre], GeneralError> {
+      return Future { [weak self] promise in
+        guard let self else { return }
+          genreRepository.getGenre()
+          .sink(receiveCompletion: { result in
+            if case .failure(let error) = result {
+              promise(.failure(
+                GeneralError(error: error)
+              ))
+            }
+          }, receiveValue: { [weak self] response in
+            guard
+              let self,
+              let response
+            else { return }
+            promise(.success(convertGenres(response)))
+          })
+          .store(in: &cancellable)
+        }
+      .eraseToAnyPublisher()
+    }
+
 }
