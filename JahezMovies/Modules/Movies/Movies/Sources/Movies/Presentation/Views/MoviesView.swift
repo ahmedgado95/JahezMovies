@@ -46,33 +46,41 @@ public struct MoviesView: View {
     private var moviesView: some View {
         VStack {
             GenresView(viewModel: viewModel)
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: viewModel.columnsGrids, spacing: 4) {
-                    ForEach(viewModel.state.movies, id: \.id) { movie in
-                        MovieCardView(
-                            title: movie.title,
-                            date: movie.releaseDate,
-                            url: movie.posterPath
-                        )
-                        .onAppear {
-                            viewModel.loadNextPage(id: movie.id)
+            if viewModel.state.noMoviesFound {
+                Spacer()
+                Text("No Movies Found !!")
+                    .foregroundColor(.gray)
+                    .font(.headline)
+                Spacer()
+            } else {
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: viewModel.columnsGrids, spacing: 4) {
+                        ForEach(viewModel.state.selectedMovies, id: \.id) { movie in
+                            MovieCardView(
+                                title: movie.title,
+                                date: movie.releaseDate,
+                                url: movie.posterPath
+                            )
+                            .onAppear {
+                                viewModel.loadNextPage(id: movie.id)
+                            }
+                        }
+                        
+                        if viewModel.state.isLoading {
+                            ProgressView()
+                                .padding()
                         }
                     }
-                    
-                    if viewModel.state.isLoading {
-                        ProgressView()
-                            .padding()
-                    }
                 }
+                .redacted(reason: viewModel.state.isLoading ? .placeholder : [])
             }
-            .redacted(reason: viewModel.state.isLoading ? .placeholder : [])
-        }
-        .refreshable {
-            viewModel.loadMovies()
         }
         .onAppear {
             viewModel.loadMovies()
             viewModel.showGenres()
+        }
+        .onChange(of: viewModel.state.selectedGenre) { _ in
+            viewModel.selectMovies()
         }
     }
     

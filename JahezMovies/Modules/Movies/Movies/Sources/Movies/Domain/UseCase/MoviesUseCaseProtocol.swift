@@ -35,6 +35,7 @@ struct MovieItem {
   var posterPath: String
   var title: String
   var releaseDate: String
+  var genres: [Int]
   let id: Int
   let voteAverage: Double
   let voteCount: Int

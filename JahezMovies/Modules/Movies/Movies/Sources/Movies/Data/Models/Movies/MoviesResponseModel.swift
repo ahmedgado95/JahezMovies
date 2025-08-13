@@ -27,6 +27,7 @@ struct MovieResponseModel: Codable {
 struct MovieItemResponse: Codable {
     let adult: Bool?
     let backdropPath: String?
+    var genres: [Int]
     let id: Int?
     let originalLanguage: String?
     let originalTitle, overview: String?
@@ -40,6 +41,7 @@ struct MovieItemResponse: Codable {
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
+        case genres = "genre_ids"
         case id
         case originalLanguage = "original_language"
         case originalTitle = "original_title"

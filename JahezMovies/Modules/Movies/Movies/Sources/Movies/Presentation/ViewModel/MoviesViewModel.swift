@@ -44,6 +44,12 @@ extension MoviesViewModel {
                 guard let self else { return }
                 
                 state.movies += response.movies
+                state.noMoviesFound = state.movies.isEmpty
+                if state.selectedGenre != nil {
+                    selectMovies()
+                } else {
+                    state.selectedMovies = state.movies
+                }
                 state.hasMoreData = currentPage < response.totalPages
                 currentPage += 1
                 state.isLoading = false
@@ -80,4 +86,17 @@ extension MoviesViewModel {
             getMovies()
         }
     }
+    
+    func selectMovies() {
+        guard let selectedGenre = state.selectedGenre else {
+            state.selectedMovies = state.movies
+            state.noMoviesFound = state.selectedMovies.isEmpty
+            return
+        }
+        
+        let filtered = state.movies.filter { $0.genres.contains(selectedGenre.id) }
+        state.selectedMovies = filtered
+        state.noMoviesFound = filtered.isEmpty
+    }
+    
 }

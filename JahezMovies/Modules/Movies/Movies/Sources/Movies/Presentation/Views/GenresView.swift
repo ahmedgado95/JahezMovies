@@ -38,5 +38,8 @@ struct GenresView: View {
             .padding(.horizontal)
         }
         .background(Color.clear)
+        .onChange(of: viewModel.state.selectedGenre) { _ in
+            viewModel.selectMovies()
+        }
     }
 }

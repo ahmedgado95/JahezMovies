@@ -32,6 +32,7 @@ final class MoviesUseCase {
                 posterPath: movie.posterPath ?? "",
                 title: movie.title ?? "",
                 releaseDate: movie.releaseDate ?? "",
+                genres: movie.genres ?? [],
                 id: movie.id ?? 0,
                 voteAverage: movie.voteAverage ?? 0.0,
                 voteCount: movie.voteCount ?? 0,

@@ -19,6 +19,7 @@ struct MovieRepositoryModel {
     let posterPath: String?
     let title: String?
     let releaseDate: String?
+    var genres: [Int]?
     let id: Int?
     let voteAverage: Double?
     let voteCount: Int?
@@ -34,6 +35,7 @@ extension MoviesRepositoryModel {
                 posterPath: item.posterPath,
                 title: item.title,
                 releaseDate: item.releaseDate,
+                genres: item.genres,
                 id: item.id,
                 voteAverage: item.voteAverage,
                 voteCount: item.voteCount,

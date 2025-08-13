@@ -32,6 +32,7 @@ extension MoviesRepository: MoviesRepositoryProtocol {
             if let movie = existingMovies.first(where: { $0.id == item.id }) {
                 movie.title = item.title
                 movie.posterPath = item.posterPath
+                movie.genres = item.genres
                 movie.releaseDate = item.releaseDate
                 movie.voteAverage = item.voteAverage
                 movie.voteCount = item.voteCount
@@ -41,6 +42,7 @@ extension MoviesRepository: MoviesRepositoryProtocol {
                     id: item.id ?? 0,
                     title: item.title,
                     posterPath: item.posterPath,
+                    genres: item.genres,
                     releaseDate: item.releaseDate,
                     voteAverage: item.voteAverage,
                     voteCount: item.voteCount,
