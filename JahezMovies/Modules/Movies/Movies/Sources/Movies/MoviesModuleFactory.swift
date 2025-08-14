@@ -38,8 +38,6 @@ class MoviesModuleFactory {
         let viewModel = MoviesViewModel(useCase: useCase,
                                         coordinator: coordinator)
         // View
-        return MainActor.assumeIsolated {
-            MoviesView(viewModel: viewModel)
-        }
+        return MoviesView(viewModel: viewModel)
     }
 }

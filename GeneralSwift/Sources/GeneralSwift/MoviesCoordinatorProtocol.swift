@@ -14,4 +14,6 @@ protocol MoviesCoordinatorProtocol {
   func push<T: UIViewController>(_ viewController: T, animated: Bool)
   func goBack(animated: Bool)
   func present<T: UIViewController>(_ viewController: T, animated: Bool)
+  func showMovieDetail(id: String)
+  func getMovieID() -> String?
 }

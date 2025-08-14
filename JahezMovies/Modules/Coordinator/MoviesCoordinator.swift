@@ -8,22 +8,27 @@ import UIKit
 import SwiftUI
 import GeneralSwift
 import Movies
+import MovieDetails
 
 class MoviesCoordinator {
-  var navigationController: UINavigationController
-  private var selectedMovieID: String?
-
-  init(navigationController: UINavigationController) {
-    self.navigationController = navigationController
-  }
+    var navigationController: UINavigationController
+    private var selectedMovieID: String?
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
 }
 
 // MARK: - MoviesCoordinatorProtocol
 extension MoviesCoordinator: MoviesCoordinatorProtocol {
     func start() {
-        let moviesView = MoviesModuleFactory.makeModule(with: self)
-        let hostingController = UIHostingController(rootView: moviesView)
-        navigationController.setViewControllers([hostingController], animated: false)
+        Task { @MainActor in
+            if #available(iOS 17, *) {
+                let moviesView = MoviesModuleFactory.makeModule(with: self)
+                let hostingController = UIHostingController(rootView: moviesView)
+                navigationController.setViewControllers([hostingController], animated: false)
+            }
+        }
     }
     
     func setRootViewController<T>(_ rootViewController: T) -> UINavigationController where T : UIViewController {
@@ -46,5 +51,19 @@ extension MoviesCoordinator: MoviesCoordinatorProtocol {
         } else {
             navigationController.popViewController(animated: animated)
         }
+    }
+    
+    func showMovieDetail(id: String) {
+        selectedMovieID = id
+        Task { @MainActor in
+            let movieDetailView = MovieDetailsModuleFactory.makeModule(with: self)
+            let hostingController = UIHostingController(rootView: movieDetailView)
+            push(hostingController)
+        }
+        
+    }
+    
+    func getMovieID() -> String? {
+        selectedMovieID
     }
 }

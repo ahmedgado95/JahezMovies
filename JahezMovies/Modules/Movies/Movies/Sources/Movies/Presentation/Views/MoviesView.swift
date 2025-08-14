@@ -61,6 +61,9 @@ public struct MoviesView: View {
                                 date: movie.releaseDate,
                                 url: movie.posterPath
                             )
+                            .onTapGesture {
+                                viewModel.showMovieDetail(id: movie.id)
+                            }
                             .onAppear {
                                 viewModel.loadNextPage(id: movie.id)
                             }

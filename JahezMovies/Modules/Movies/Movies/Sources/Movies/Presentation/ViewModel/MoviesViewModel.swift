@@ -117,4 +117,9 @@ extension MoviesViewModel {
         state.selectedMovies = filtered
         state.noMoviesFound = filtered.isEmpty
     }
+    
+    func showMovieDetail(id: Int) {
+        coordinator.showMovieDetail(id: "\(id)")
+    }
+
 }
