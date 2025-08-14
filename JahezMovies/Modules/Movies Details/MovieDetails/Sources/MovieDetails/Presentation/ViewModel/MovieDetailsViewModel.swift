@@ -18,4 +18,8 @@ final class MovieDetailsViewModel: ObservableObject {
     init(coordinator: MoviesCoordinatorProtocol) {
       self.coordinator = coordinator
     }
+    
+    func back() {
+      coordinator.goBack(animated: true)
+    }
 }

@@ -95,20 +95,7 @@ public struct MoviesView: View {
         
         var body: some View {
             VStack(alignment: .leading, spacing: 4) {
-                AsyncImage(url: URL(string:"\(Constants.Network.imageBaseURL)\(url ?? "")")) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    } else if phase.error != nil || url == nil || url?.isEmpty == true {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.gray)
-                    } else {
-                        ProgressView()
-                    }
-                }
+                RemoteImage(urlString: "\(Constants.Network.imageBaseURL)\(url ?? "")")
                 .frame(height: 180)
                 .frame(maxWidth: .infinity)
                 .clipped()
