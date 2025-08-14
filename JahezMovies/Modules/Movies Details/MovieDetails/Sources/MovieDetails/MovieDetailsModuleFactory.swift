@@ -6,12 +6,21 @@
 //
 
 import GeneralSwift
+import GadoNetwork
 
 @MainActor
-class MovieDetailsModuleFactory {
-    static func makeModule(with coordinator: MoviesCoordinatorProtocol) -> MovieDetailsView {
+public class MovieDetailsModuleFactory {
+    public static func makeModule(with coordinator: MoviesCoordinatorProtocol) -> MovieDetailsView {
+        // API Client
+        let baseAPIClient = BaseAPIClient()
+        let movieDetailsClient = MovieDetailsAPIClient(client: baseAPIClient)
+        // repository
+        let repository = MovieDetailsRepository(client: movieDetailsClient)
+        // useCase
+        let useCase = MovieDetailsUseCase(repository: repository)
         // ViewModel
-        let viewModel = MovieDetailsViewModel(coordinator: coordinator)
+        let viewModel = MovieDetailsViewModel(useCase: useCase,
+                                              coordinator: coordinator)
         // View
         return MovieDetailsView(viewModel: viewModel)
     }

@@ -15,7 +15,6 @@ public struct MoviesView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
         appearance.shadowColor = .clear
         appearance.titleTextAttributes = [
             .foregroundColor: UIColor(hex: "#F5C519")

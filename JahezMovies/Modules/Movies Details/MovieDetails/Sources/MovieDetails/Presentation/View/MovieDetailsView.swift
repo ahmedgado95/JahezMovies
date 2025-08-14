@@ -8,19 +8,17 @@
 import SwiftUI
 import GeneralSwift
 
-struct MovieDetailsView: View {
+public struct MovieDetailsView: View {
     @StateObject private var viewModel: MovieDetailsViewModel
     
     init(viewModel: MovieDetailsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-    var body: some View {
-        var url: String?
+    public var body: some View {
         ScrollView {
             ZStack(alignment: .top) {
-                RemoteImage(urlString: "\(Constants.Network.imageBaseURL)\(url)")
-                    .scaledToFill()
-                
+                RemoteImage(urlString: viewModel.posterURL ,
+                            contentMode: .fit)
                 HStack {
                     Button(action: {
                         viewModel.back()
@@ -33,45 +31,44 @@ struct MovieDetailsView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        print("Share button tapped!")
-                    }) {
-                        Image(systemName: "square.and.arrow.up")
-                            .foregroundColor(.white)
-                            .font(.title)
-                            .padding(.horizontal , 16)
-                    }
+                    ShareButton(activityItems: [viewModel.titleWithDate,
+                                                viewModel.posterURL],
+                                title: "Check out this movie!")
+
                 }
                 .padding(.horizontal, 10)
                 .padding(.top, 10)
             }
             
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
                 HStack(alignment: .top, spacing: 12) {
-                    RemoteImage(urlString: "\(Constants.Network.imageBaseURL)\(url)")
+                    RemoteImage(urlString: viewModel.posterURL)
                         .frame(width: 100, height: 150)
                         .cornerRadius(8)
                         .clipped()
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("title")
-                            .font(.title)
+                        Text(viewModel.titleWithDate)
+                            .font(.headline)
                             .bold()
                         
-                        Text("details")
+                        Text(viewModel.genreNames)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
                     }
                 }
                 
+                Text(viewModel.state.movieDetails.overview)
+                    .font(.headline)
+                  .padding(.vertical)
+
                 VStack(alignment: .leading, spacing: 8) {
                     
-                    if let homeURL = URL(string: url ?? "homeURL") {
+                    if let homeURL = URL(string: viewModel.state.movieDetails.homepage) {
                         HStack {
                             Text("Homepage: ")
                                 .font(.headline)
                             if #available(iOS 16.0, *) {
-                                Link("homeURL", destination: homeURL)
+                                Link(viewModel.state.movieDetails.homepage, destination: homeURL)
                                     .foregroundColor(.blue)
                                     .underline()
                             }
@@ -81,7 +78,7 @@ struct MovieDetailsView: View {
                     HStack(alignment: .top) {
                         Text("Languages:")
                             .font(.headline)
-                        Text("languages")
+                        Text(viewModel.languages)
                             .font(.subheadline)
                             .padding(.leading, 8)
                     }
@@ -92,7 +89,7 @@ struct MovieDetailsView: View {
                                 Text("Status:")
                                     .font(.headline)
                                 
-                                Text("status")
+                                Text(viewModel.state.movieDetails.status)
                                     .font(.subheadline)
                             }
                             HStack(){
@@ -100,7 +97,7 @@ struct MovieDetailsView: View {
                                 Text("Budget:")
                                     .font(.headline)
                                 
-                                Text("\("budget") $")
+                                Text("\(viewModel.state.movieDetails.budget) $")
                                     .font(.subheadline)
                             }
                         }
@@ -112,14 +109,14 @@ struct MovieDetailsView: View {
                                 Text("Runtime:")
                                     .font(.headline)
                                 
-                                Text("\("runtime" ) minutes")
+                                Text("\(viewModel.state.movieDetails.runtime) minutes")
                                     .font(.subheadline)
                             }
                             HStack(){
                                 Text("Revenue:")
                                     .font(.headline)
                                 
-                                Text("\("revenue") $")
+                                Text("\(viewModel.state.movieDetails.revenue) $")
                                     .font(.subheadline)
                             }
                         }
@@ -128,6 +125,10 @@ struct MovieDetailsView: View {
                 }
             }
             .padding()
+        }
+        .redacted(reason: viewModel.state.isLoading ? .placeholder : [])
+        .onAppear {
+          viewModel.showMovieDetails()
         }
         .ignoresSafeArea()
         .navigationBarHidden(true)
