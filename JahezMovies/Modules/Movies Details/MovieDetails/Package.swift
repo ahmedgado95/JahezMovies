@@ -14,11 +14,19 @@ let package = Package(
             name: "MovieDetails",
             targets: ["MovieDetails"]),
     ],
+    dependencies: [
+        .package(path: "GadoNetwork"),
+        .package(path: "GeneralSwift")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "MovieDetails"),
+            name: "MovieDetails",
+            dependencies: [
+                .product(name: "GadoNetwork", package: "GadoNetwork"),
+                .product(name: "GeneralSwift", package: "GeneralSwift")
+            ]),
         .testTarget(
             name: "MovieDetailsTests",
             dependencies: ["MovieDetails"]
